@@ -1,0 +1,50 @@
+{% extends "layout_calculate.html" %}
+
+{% block title %}
+Summary
+{% endblock %}
+
+{% block main %}
+<section id="summary" class="summary">
+    <div class="container ">
+        <div class="section-title">
+            <h2>Summary</h2>
+        </div>
+
+
+        <div class="row content justify-content-center mt-3 mb-5">
+            <div class="col-md-4">
+                <p>Beam Calculation Data:</p>
+                <hr>
+
+                <div class="mb-3 row">
+                    {% include "layout_summary.html" %}
+                    <div class="col-8">
+                        <p class="normal-text">Chosen Profile:</p>
+                    </div>
+                    <div class="col-4">
+                        {% set data = session["calculator"]["chosen_profile"]["section"].split('_') %}
+                        <p>{{data[0].title() + " " + data[1].lower()}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="d-grid gap-2 col-3 mx-auto pt-3">
+                        <a class="btn btn-outline-danger" href="/choosing_profile">Previous</a>
+                    </div>
+                    <div class="d-grid gap-2 col-3 mx-auto pt-3">
+                        <a class="btn btn-outline-success" href="/results">Calculate</a>
+                    </div>
+                    <div class="d-grid gap-1 col-3 mx-auto pt-3">
+                        <a class="btn btn-outline-primary" href="/calculate">Reset</a>
+                    </div>
+                </div>
+                <div class="row normal-text mt-2 justify-content-center text-center">
+                    <p><i>*This calculation costs <b>1</b> credit.</i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section><!-- End summary -->
+
+{% endblock %}

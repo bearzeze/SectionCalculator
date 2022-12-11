@@ -1,0 +1,55 @@
+    {% if session["calculator"]["loading_exists"]["axial"]: %}
+    <div class="col-8">
+        <p class="normal-text">Max. Axial Internal Force:</p>
+    </div>
+    <div class="col-4 mx-auto">
+        {% if session["calculator"]["load_values"]["axial_force"] < 2500 %} <p>
+            {{session["calculator"]["load_values"]["axial_force"]}} N</p>
+            {% else %}
+            <p>{{session["calculator"]["load_values"]["axial_force"] / 1000}} kN</p>
+            {% endif %}
+    </div>
+    {% endif %}
+
+    {% if session["calculator"]["loading_exists"]["bending"]: %}
+    <div class="col-8">
+        <p class="normal-text">Max. Bending Internal Moment:</p>
+    </div>
+    <div class="col-4">
+        {% if session["calculator"]["load_values"]["bending_moment"] < 2500 %} <p>
+
+            {{session["calculator"]["load_values"]["bending_moment"]}} Nm</p>
+            {% else %}
+            <p>{{session["calculator"]["load_values"]["bending_moment"] / 1000}} kNm</p>
+            {% endif %}
+    </div>
+    {% endif %}
+
+    {% if session["calculator"]["loading_exists"]["torsion"]: %}
+    <div class="col-8">
+        <p class="normal-text">Max. Internal Torque:</p>
+    </div>
+
+    <div class="col-4">
+        {% if session["calculator"]["load_values"]["torque"] < 2500 %} <p>
+            {{session["calculator"]["load_values"]["torque"]}} Nm</p>
+            {% else %}
+            <p>{{session["calculator"]["load_values"]["torque"] / 1000}} kNm</p>
+            {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="col-8">
+        <p class="normal-text">Tensile Strength of Material:</p>
+    </div>
+    <div class="col-4">
+        <p>{{session["calculator"]["allowed_stress"]["tensile_strength"]}} MPa</p>
+    </div>
+
+    <div class="col-8">
+        <p class="normal-text">Safety Factor:</p>
+    </div>
+    <div class="col-4">
+        <p>{{session["calculator"]["allowed_stress"]["safety_factor"]}}</p>
+    </div>
+

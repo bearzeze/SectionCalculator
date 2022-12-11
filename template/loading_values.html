@@ -1,0 +1,97 @@
+{% extends "layout_calculate.html" %}
+
+{% block title %}
+Loading Values
+{% endblock %}
+
+{% block main %}
+<section id="loading_values" class="loading_values">
+    <div class="container ">
+
+        <div class="section-title">
+            {% if loading_type["counter"] > 1 %}
+            <h2>Load Values</h2>
+            {% else %}
+            <h2>Load Value</h2>
+            {% endif %}
+        </div>
+
+        {% if get_flashed_messages() %}
+        <div class="row content justify-content-center">
+            <div class="col-lg-4 alert alert-danger" role="alert">
+                <h5 class="alert-heading">
+                    <span><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg></span>
+                    {{text_title}}
+                </h5>
+                <hr>
+                <p class="small ms-auto normal-text">{{ get_flashed_messages() | join(" ") }}</p>
+            </div>
+        </div>
+
+        <div class="row content justify-content-center mt-3 mb-2">
+
+            {% else %}
+            <div class="row content justify-content-center mt-5 mb-5">
+                {% endif %}
+
+                <div class="col-lg-4">
+                    {% if loading_type["counter"] > 1 %}
+                    <p>Enter Maximum Value of Internal Loads:</p>
+                    {% else %}
+                    <p>Enter Maximum Value of Internal Load:</p>
+                    {% endif %}
+
+                    <form action="/loading_values" method="post" autocomplete="off">
+                        {% if loading_type["axial"] == True %}
+                        <div class="mb-3 row">
+                            <label for="axialForce" class="col-sm-8 col-form-label text-start normal-text">Axial
+                                Force:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control text-end" id="axialForce" name="axialForce"
+                                    placeholder="kN">
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if loading_type["bending"] == True %}
+                        <div class="mb-3 row">
+                            <label for="bendingMoment" class="col-sm-8 col-form-label text-start normal-text">Bending
+                                Moment:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control text-end" id="bendingMoment" name="bendingMoment"
+                                    placeholder="Nm">
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if loading_type["torsion"] == True %}
+                        <div class="mb-3 row">
+                            <label for="torque" class="col-sm-8 col-form-label text-start normal-text">Torque:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control text-end" id="torque" name="torque"
+                                    placeholder="Nm">
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="row">
+                            <div class="d-grid gap-2 col-4 ms-auto me-2 pt-3">
+                                <a class="btn btn-outline-danger" href="/loading_types">Previous</a>
+                            </div>
+                            <div class="d-grid gap-2 col-4 ms-2 me-auto pt-3">
+                                <button class="btn btn-outline-success" type="submit">Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="row content justify-content-center mt-2 mb-5">
+            </div>
+            <div class="row content justify-content-center mt-2 mb-5">
+            </div>
+</section><!-- End Loading Values -->
+
+{% endblock %}

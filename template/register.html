@@ -1,0 +1,80 @@
+{% extends "layout_calculate.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+<section id="register" class="register">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Register</h2>
+    </div>
+
+    {% if get_flashed_messages() %}
+    <div class="row content justify-content-center">
+      <div class="col-lg-4 alert alert-danger" role="alert">
+        <h5 class="alert-heading">
+          <span><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+              <use xlink:href="#exclamation-triangle-fill" />
+            </svg></span>
+          We couldn't create your account!
+        </h5>
+        <hr>
+        <p class="small ms-auto">{{ get_flashed_messages() | join(" ") }}</p>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="row content justify-content-center">
+      <div class="col-lg-4">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Register</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <div class="row content justify-content-center pt-4">
+      <div class="col-lg-4">
+        <form method="post" action="/register" autocomplete="off">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" name="username">
+            <div class="form-text pt-1">Username should be at least 4 characters long.</div>
+
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+            <div class="form-text pt-1">Password should be at least 8 characters long including 1 digit.</div>
+          </div>
+          <div class="mb-3">
+            <label for="confirmation" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmation" name="confirmation">
+          </div>
+          <div class="d-grid gap-2 col-3 mx-auto">
+            <button class="btn btn-outline-dark" type="submit">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row content">
+      <div class="col-lg-4 mb-1">
+
+      </div>
+  </div>
+
+
+  </div>
+</section><!-- End About Us Section -->
+
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends "layout_calculate.html" %}
+
+{% block title %}
+Choosing Profile
+{% endblock %}
+
+{% block main %}
+<section id="allowable_stress" class="allowable_stress">
+    <div class="container ">
+        <div class="section-title">
+            <h2>Select Beam Profile</h2>
+        </div>
+        {% if get_flashed_messages() %}
+        <div class="row content justify-content-center">
+            <div class="col-lg-4 alert alert-danger" role="alert">
+                <h5 class="alert-heading">
+                    <span><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg></span>
+                    {{title}}
+                </h5>
+                <hr>
+                <p class="small ms-auto normal-text">{{ get_flashed_messages() | join(" ") }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- When there are torsion, only round cross section can be chosen !-->
+        <div class="row content justify-content-center mt-2">
+            {% if session["calculator"]["loading_exists"]["torsion"] == False %}
+            <div class="col-lg-2 card card-profile mx-auto">
+                <a class="btn rectangle_tube_section profile-images"><img src="/static/assets/img/hollow rectangle beam.jpg" class="card-img-top"
+                        alt="Hollow Rectangle cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">Rectangle tube</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 card card-profile mx-auto">
+                <a class="btn round_tube_section profile-images"><img src="/static/assets/img/tube beam.jpg" class="card-img-top"
+                        alt="Tube cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">Round tube</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 card card-profile mx-auto">
+                <a class="btn round_bar_section profile-images"><img src="/static/assets/img/round beam.jpg"
+                        class="card-img-top" alt="Round beam cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">Round bar</p>
+                </div>
+            </div>
+
+            {% else %}
+            <div class="col-lg-2 card card-profile ms-auto me-3">
+                <a class="btn round_tube_section profile-images"><img src="/static/assets/img/tube beam.jpg" class="card-img-top"
+                        alt="Tube cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">Round tube</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 card card-profile ms-3 me-auto">
+                <a class="btn round_bar_section profile-images"><img src="/static/assets/img/round beam.jpg"
+                        class="card-img-top" alt="Round beam cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">Round beam</p>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if session["calculator"]["loading_exists"]["torsion"] == False %}
+            <div class="col-lg-2 card card-profile mx-auto">
+                <a class="btn square_bar_section profile-images"><img src="/static/assets/img/square beam.jpg"
+                        class="card-img-top" alt="Square beam cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">Square bar</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 card card-profile mx-auto">
+                <a class="btn square_tube_section profile-images"><img src="/static/assets/img/hollow square beam.jpg" class="card-img-top"
+                        alt="Hollow square beam cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">Square tube</p>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+
+        {% if session["calculator"]["loading_exists"]["torsion"] == False %}
+        <div class="row content justify-content-center mt-2">
+            <div class="col-lg-2 card card-profile ms-auto">
+                <a class="btn I_beam_section profile-images"><img src="/static/assets/img/I beam.jpg" class="card-img-top"
+                        alt="I beam cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">I beam</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 card card-profile ms-5 me-5">
+                <a class="btn U_beam_section profile-images"><img src="/static/assets/img/C Beam.jpg" class="card-img-top"
+                        alt="U beam cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">U beam</p>
+                </div>
+            </div>
+
+            <div class="col-lg-2 card card-profile me-auto">
+                <a class="btn T_beam_section profile-images"><img src="/static/assets/img/T beam.jpg" class="card-img-top"
+                        alt="T beam cross section"></a>
+                <div class="card-body">
+                    <hr>
+                    <p class="card-text text-center">T beam</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+    <div class="row content justify-content-center mt-5 mb-5">
+        <div class="col-lg-4 text-center">
+            <p>Selected Desired Cross Section Profile:</p>
+
+            <form action="/choosing_profile" method="post">
+                <select name="profileSelection" class="form-select text-center mx-auto"
+                    aria-label="Default select example">
+                    {% if session["calculator"]["loading_exists"]["torsion"] == False %}
+                    <option value="rectangle_tube_section" id="rectangle_tube_section">Rectangle tube</option>
+                    {% endif %}
+                    <option selected>Choose Standard Cross Section</option>
+                    <option value="round_bar_section" id="round_bar_section">Round bar</option>
+                    <option value="round_tube_section" id="round_tube_section">Round tube</option>
+                    {% if session["calculator"]["loading_exists"]["torsion"] == False %}
+                    <option value="square_bar_section" id="square_bar_section">Square bar</option>
+                    <option value="square_tube_section" id="square_tube_section">Square tube</option>
+                    <option value="I_beam_section" id="I_beam_section">I beam</option>
+                    <option value="U_beam_section" id="U_beam_section">U beam</option>
+                    <option value="T_beam_section" id="T_beam_section">T beam</option>
+                    {% endif %}
+                </select>
+
+                <div class="row">
+                    <div class="d-grid gap-2 col-3 ms-auto me-2 pt-3">
+                        <a class="btn btn-outline-danger" href="/allowable_stress">Previous</a>
+                    </div>
+                    <div class="d-grid gap-2 col-3 ms-2 me-auto pt-3">
+                        <button class="btn btn-outline-success" type="submit">Next</button>
+                    </div>
+                </div>
+            </form </div>
+        </div>
+    </div>
+
+</section><!-- End Loading Values -->
+
+{% endblock %}

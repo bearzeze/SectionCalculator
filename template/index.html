@@ -1,0 +1,375 @@
+{% extends "layout_index.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up"
+        data-aos-delay="200">
+        <h1>Get your cross-section dimension fast and accurate</h1>
+        <h2>Application for calculating cross-section and chosing standard dimension of the structural elements</h2>
+      </div>
+      <div class="col-lg-2 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1 img-fluid"
+        data-aos="fade-up" data-aos-delay="200">
+      </div>
+      <div class="col-lg-4 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1 img-fluid"
+        data-aos="fade-up" data-aos-delay="200">
+        <img id="logo" src="/static/assets/img/logo_no_bg.png" alt="logo" class="img-fluid">
+      </div>
+    </div>
+  </div>
+
+</section><!-- End Hero -->
+
+<section id="clients" class="clients section-bg">
+</section>
+
+<!-- ======= About Us Section ======= -->
+<section id="about" class="about">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>About</h2>
+    </div>
+
+    <div class="row content">
+      <div class="col-lg-6">
+        <p class="normal-text justify-text">
+          This application provides you with the ability to calculate the necessary and adequate desired standard
+          cross-section.</p>
+        <ul class="normal-text">
+          <li><i class="ri-check-double-line"></i> Precise and fast determination of required dimensions</li>
+          <li><i class="ri-check-double-line"></i> Managing multiple variants of various loads</li>
+          <li><i class="ri-check-double-line"></i> Easy way of navigating throughout the process</li>
+        </ul>
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0">
+        <p class="normal-text justify-text">
+          The application also allows for the selection of the <b>best possible</b> solution from among all available
+          standard cross-sections.
+          Optimization leads to the selection of a structure that can handle the same load with the same material but
+          has the smallest possible cross-section.
+          This leads to cost-cutting measures.
+        </p>
+        <a href="#cta" class="btn-learn-more">Call to Action</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End About Us Section -->
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Technologies</h2>
+      <p class="normal-text">Application was created using these modern and fast web technologies.</p>
+    </div>
+
+    <div class="row">
+
+
+      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0 mx-auto" data-aos="zoom-in" data-aos-delay="200">
+        <div class="icon-box">
+          <div class="icon"><a href="https://code.visualstudio.com/" target="_blank"><i class='bx bxl-visual-studio'></i></a>
+            </div>
+          <h4><a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code</a></h4>
+          <p class="normal-text justify-text"> The top pick source code editor for web developers, with extensions to support just about any programming language.</p>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 mx-auto" data-aos="zoom-in" data-aos-delay="300">
+        <div class="icon-box">
+          <div class="icon"><a href="https://www.python.org/" target="_blank"><i class='bx bxl-python'></i></a></div>
+          <h4><a href="https://www.python.org/" target="_blank">Python 3</a></h4>
+          <p class="normal-text justify-text">Python 3 lets you work more quickly and integrate your systems more effectively.</p>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 mx-auto" data-aos="zoom-in" data-aos-delay="400">
+        <div class="icon-box">
+          <div class="icon"><a href="https://flask.palletsprojects.com/en/2.2.x/" target="_blank"><i class='bx bxl-flask'></i></a></div>
+          <h4><a href="https://flask.palletsprojects.com/en/2.2.x/" target="_blank">Flask</a></h4>
+          <p class="normal-text justify-text">Flask is python framework used for developing various web applications, implemented on Werkzeug and Jinja2.</p>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0 mx-auto" data-aos="zoom-in" data-aos-delay="400">
+        <div class="icon-box">
+          <div class="icon"><a href="https://getbootstrap.com/" target="_blank"><i class='bx bxl-bootstrap'></i></a>
+            </div>
+          <h4><a href="https://getbootstrap.com/" target="_blank">Bootstrap 5</a></h4>
+          <p class="normal-text justify-text">Powerful, extensible, and feature-packed frontend toolkit.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Services Section -->
+
+<!-- ======= Cta Section ======= -->
+<section id="cta" class="cta">
+  <div class="container" data-aos="zoom-in">
+
+    <div class="row">
+      <div class="col-lg-9 text-center text-lg-start">
+        <h3>Call To Action</h3>
+        <p class="normal-text">Register and try 10 cross-section calculation for free.</p>
+      </div>
+      <div class="col-lg-3 cta-btn-container text-center mx-auto">
+        {% if not session["user_id"] %}
+        <a class="cta-btn-reg align-middle me-4" href="/register">Register</a>
+        {% endif %}
+        <a class="cta-btn align-middle" href="/calculate">Calculate</a>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Cta Section -->
+
+<!-- ======= Team Section ======= -->
+<section id="team" class="team section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Team Members</h2>
+      <p class="normal-text">Meet our team members from all of the branches. From educators, psycho(logist), hooligans
+        and chickens. You can
+        rely on them but do not be suprised about their action and behavior. </p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-6">
+        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="200">
+          <div class="pic"><img src="/static/assets/img/team/zeze.jfif" class="img-fluid" alt=""></div>
+          <div class="member-info">
+            <h4>Zejd Imamovic</h4>
+            <span>Product Manager</span>
+            <p>Creator of the web application</p>
+            <div class="social">
+              <a href="https://www.linkedin.com/in/zejd-imamovic-a31321135/"> <i class="ri-linkedin-box-fill"></i> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6  mt-4 mt-lg-0">
+        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="100">
+          <div class="pic"><img src="/static/assets/img/team/malan.jfif" class="img-fluid" alt=""></div>
+          <div class="member-info">
+            <h4>David J. Malan</h4>
+            <span>CS50x Chief Executive Officer</span>
+            <p>Harvard's computer science teacher</p>
+            <div class="social">
+              <a href="https://twitter.com/davidjmalan"><i class="ri-twitter-fill"></i></a>
+              <a href="https://www.facebook.com/dmalan/"><i class="ri-facebook-fill"></i></a>
+              <a href="https://www.instagram.com/davidjmalan/"><i class="ri-instagram-fill"></i></a>
+              <a href="https://www.linkedin.com/in/malan/"> <i class="ri-linkedin-box-fill"></i> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="col-lg-6 mt-4">
+        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+          <div class="pic"><img src="/static/assets/img/team/ivor.jfif" class="img-fluid" alt=""></div>
+          <div class="member-info">
+            <h4>Ivor Tokic</h4>
+            <span>Talent Acquisition Specialist</span>
+            <p>(front)head(lock) hunter</p>
+            <div class="social">
+              <a href="https://www.linkedin.com/in/ivor-tokic-klika/"> <i class="ri-linkedin-box-fill"></i> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-4">
+        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+          <div class="pic"><img src="/static/assets/img/team/adzamija.jfif" class="img-fluid" alt=""></div>
+          <div class="member-info">
+            <h4>Muhamed Jr. Amosque</h4>
+            <span>Python Beginner</span>
+            <p>Dat look</p>
+            <div class="social">
+              <a href="https://www.linkedin.com/in/muhamed-ad%C5%BEamija-3655ab220/"> <i
+                  class="ri-linkedin-box-fill"></i> </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Team Section -->
+
+<!-- ======= Pricing Section ======= -->
+<section id="pricing" class="pricing">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Pricing</h2>
+      <p class="normal-text">Begin your journey for free. Register to receive 10 credits, which will be sufficient for
+        exploring the
+        application.</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="box">
+          <h3>Free</h3>
+          <h4><sup>$</sup>0<span></span></h4>
+          <hr>
+          <ul class="normal-text">
+            <li><i class="bx bx-check"></i> 10 credits for free</li>
+            <li><i class="bx bx-check"></i> 10 possible calculations</li>
+            <li><i class="bx bx-check"></i> 2 possible optimizations</li>
+            <li class="na"><i class="bx bx-x"></i> <span>unlimited number of calculations</span></li>
+            <li class="na"><i class="bx bx-x"></i> <span>unlimited number of optimizations</span></li>
+          </ul>
+          {% if session["user_id"] %}
+          <a href="/register" class="buy-btn btn disabled" aria-disabled="true">Get Started</a>
+          {% else %}
+          <a href="/register" class="buy-btn">Get Started</a>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
+        {% if not session["user_id"] %}
+               <div class="box featured">
+          {% else %}
+          <div class="box">
+            {% endif %}
+
+          <h3>Steel Benefits</h3>
+          <h4><sup>$</sup>29</h4>
+          <hr>
+          <ul class="normal-text">
+            <li><i class="bx bx-check"></i> 240 credits</li>
+            <li><i class="bx bx-check"></i> 240 possible calculations</li>
+            <li><i class="bx bx-check"></i> 60 possible optimizations</li>
+            <li class="na"><i class="bx bx-x"></i> <span>unlimited number of calculations</span></li>
+            <li class="na"><i class="bx bx-x"></i> <span>unlimited number of optimizations</span></li>
+          </ul>
+          {% if session["user_id"] %}
+          <a href="/credits" class="buy-btn">Upgrade</a>
+          {% else %}
+          <a href="/register" class="buy-btn">Get Started</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+        <div class="box">
+          <h3>Titanium Benefits</h3>
+          <h4><sup>$</sup>119<span>/per month</span></h4>
+          <hr>
+          <ul class="normal-text">
+            <li><i class="bx bx-check"></i> unlimited number of calculations</li>
+            <li><i class="bx bx-check"></i> unlimited number of optimizations</li>
+            <li><i class="bx bx-check"></i> 365 days access</li>
+            <li><i class="bx"></i> </li>
+            <li><i class="bx"></i> </li>
+            <li><i class="bx"></i> </li>
+            <li><i class="bx"></i> </li>
+          </ul>
+          {% if session["user_id"] %}
+          <a href="/credits" class="buy-btn">Upgrade</a>
+          {% else %}
+          <a href="/register" class="buy-btn text-center">Get Started</a>
+          {% endif %}
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Pricing Section -->
+
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Contact</h2>
+      <p class="normal-text">Feel free to locate and/or contact us using the information provided below.</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-5 d-flex align-items-stretch">
+        <div class="info">
+          <div class="address">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Location:</h4>
+            <p>Grdonj bb, Sarajevo, Bosnia and Herzegovina</p>
+          </div>
+
+          <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>i.zejd@hotmail.com</p>
+          </div>
+
+          <div class="phone">
+            <i class="bi bi-phone"></i>
+            <h4>Call:</h4>
+            <p>+387 33 225 883</p>
+          </div>
+
+          <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+            src="https://www.google.com/maps/embed/v1/place?q=Grdonj%2083a%2C%20Sarajevo%2C%20Bosnia%20and%20Herzegovina&key=AIzaSyDu7PhO1mj7qfJipr-bscadxqI4xOqWutA"></iframe>
+        </div>
+      </div>
+
+      <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+        <form method="post" class="php-email-form" action="mailto:i.zejd@hotmail.com">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="name">Your Name</label>
+              <input type="text" name="name" class="form-control" id="name" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="name">Your Email</label>
+              <input type="email" class="form-control" name="email" id="email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name">Subject</label>
+            <input type="text" class="form-control" name="subject" id="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="name">Message</label>
+            <textarea class="form-control" name="message" rows="10" required></textarea>
+          </div>
+          <div class="my-3">
+            <div class="loading">Loading</div>
+            <div class="error-message"></div>
+            <div class="sent-message">Your message has been sent. Thank you!</div>
+          </div>
+          <div class="text-center"><button type="submit">Send Message</button></div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Contact Section -->
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "layout_calculate.html" %}
+
+{% block title %}
+Loading Type
+{% endblock %}
+
+{% block main %}
+<section id="loading_type" class="loading_type">
+    <div class="container ">
+
+        <div class="section-title">
+            <h2>Choose Loading Type(s)</h2>
+        </div>
+
+
+            <div class="row content justify-content-center mt-2">
+                <div class="col-lg-3 card">
+                    <a class="btn axial loading-images"><img src="/static/assets/img/axial-loading.jpg" class="card-img-top"
+                            alt="axial loading"></a>
+                    <hr>
+                    <p class="card-text text-center">Axial Loading</p>
+                </div>
+
+
+                <div class="col-lg-3 card ms-auto me-auto">
+                    <a class="btn bending loading-images"><img src="/static/assets/img/bending.jpg" class="card-img-top"
+                            alt="bending loading"></a>
+                    <hr>
+                    <p class="card-text text-center">Bending</p>
+                </div>
+
+                <div class="col-lg-3 card">
+                    <a class="btn torsion loading-images"><img src="/static/assets/img/torsion.jpg" class="card-img-top"
+                            alt="Torsional loading"></a>
+                    <div class="card-body">
+                        <hr>
+                        <p class="card-text text-center">Torsion</p>
+                    </div>
+                </div>
+            </div>
+
+        <div class="row content justify-content-center mt-5 mb-3">
+            <div class="col-lg-3">
+                <p>Chosen Loading Type(s): </p>
+                <form action="/loading_types" method="post">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="axial" id="axialCheck" name="checkLoading">
+                        <label class="form-check-label normal-text" for="axialCheck">Axial</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="bending" id="bendingCheck" name="checkLoading">
+                        <label class="form-check-label normal-text" for="bendingCheck">Bending</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="torsion" id="torsionCheck" name="checkLoading">
+                        <label class="form-check-label normal-text" for="torsionCheck">Torsion</label>
+                    </div>
+
+                    <div class="d-grid gap-2 col-4 mx-auto pt-3">
+                        <button class="btn btn-outline-success" type="submit">Next</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row content justify-content-center mt-2 mb-3">
+        </div>
+</section><!-- End Loading Type -->
+{% endblock %}

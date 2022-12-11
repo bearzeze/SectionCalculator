@@ -1,0 +1,88 @@
+{% extends "layout_calculate.html" %}
+
+{% block title %}
+Credits
+{% endblock %}
+
+{% block main %}
+<section id="credits" class="credits">
+    <div class="container">
+
+        <div class="section-title">
+            <h2>Your credits</h2>
+        </div>
+
+        {% if get_flashed_messages() %}
+        <div class="row content justify-content-center">
+            {% if behavior == "danger" %}
+            <div class="col-lg-4 alert alert-danger" role="alert">
+                <h5 class="alert-heading">
+                    <span><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg></span>
+                    {% else %}
+                    <div class="col-lg-4 alert alert-success" role="alert">
+                        <h5 class="alert-heading">
+                            <span><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                    aria-label="Success:">
+                                    <use xlink:href="#check-circle-fill" />
+                                </svg>
+                            </span>
+                            {% endif %}
+
+                            {{ title }}
+                        </h5>
+                        <hr>
+                        <p class="small ms-auto normal-text">{{ get_flashed_messages() | join(" ") }}</p>
+                    </div>
+            </div>
+            {% endif %}
+        <div class="mb-3">
+            <p class="text-center ms-auto fs-3">Hello, <span class="current_username">{{session["username"]}}</span></p>
+            <p class="text-center ms-auto fs-3"> You currently have <span class="current_credits">{{ session["credits"]
+                    }}</span>
+                {% if session["credits"] == 1 %}
+                credit
+                {% else %}
+                credits
+                {% endif %}
+            </p>
+            
+        </div>
+        
+        
+            {% if get_flashed_messages() %}
+            <div class="row content justify-content-center pt-3 mt-1">
+                {% else %}
+                <div class="row content justify-content-center pt-3 mt-5">
+                    {% endif %}
+
+                    <div class="col-4 col-lg-2">
+                        <form method="post" action="/credits" autocomplete="off">
+
+                            <div class="mb-3">
+                                <p for="additional_credits" class="form-label text-center">Add More Credits:</p>
+                                <input type="number" class="form-control" id="additional_credits"
+                                    name="additional_credits" , min="1">
+
+                            </div>
+
+                            <div class="d-grid gap-2 col-5 mx-auto pt-3">
+                                <button class="btn btn-outline-success" type="submit">Buy</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row content">
+                    <div class="col-lg-4 pb-4 mb-4">
+
+                    </div>
+                </div>
+                <div class="row content">
+                    <div class="col-lg-4 pb-4 mb-4">
+
+                    </div>
+                </div>
+            </div>
+</section><!-- End Change Password Section -->
+{% endblock %}

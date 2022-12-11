@@ -1,0 +1,87 @@
+{% extends "layout_calculate.html" %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block main %}
+<section id="login" class="login">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>Login</h2>
+    </div>
+
+    {% if get_flashed_messages() %}
+    <div class="row content justify-content-center">
+      {% if error_occurs %}
+      <div class="col-lg-4 alert alert-danger" role="alert">
+        <h5 class="alert-heading">
+          <span><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+              <use xlink:href="#exclamation-triangle-fill" />
+            </svg></span>
+          We couldn't sign you in!
+        </h5>
+        {% else %}
+            <div class="col-lg-4 alert alert-success" role="alert">
+              <h5 class="alert-heading">
+                <span><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                    <use xlink:href="#check-circle-fill" />
+                  </svg> </span>
+                You've registred successfully!
+              </h5>
+              {% endif %}
+              <hr>
+              <p class="small ms-auto">{{ get_flashed_messages() | join(" ") }}</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row content justify-content-center mt-2">
+          <div class="col-lg-4">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row content justify-content-center pt-5">
+          <div class="col-lg-4">
+            <form method="post" action="/login" autocomplete="off" class="mb-0">
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                {% if username_exists %}
+                <input type="text" class="form-control" id="username" name="username" value={{username}}>
+                {% else %}
+                <input type="text" class="form-control" id="username" name="username">
+                {% endif %}
+              </div>
+
+
+              <div class="mb-3 pt-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+              </div>
+
+              <div class="d-grid gap-2 col-3 mx-auto pt-3">
+                <button class="btn btn-outline-primary" type="submit">Log In</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        ¸
+
+        <div class="row content">
+          <div class="col-lg-4 mb-4">
+
+          </div>
+        </div>
+      </div>
+</section><!-- End About Us Section -->
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "layout_calculate.html" %}
+
+{% block title %}
+Calculate
+{% endblock %}
+
+{% block main %}
+<section id="calculate" class="calculate">
+    <div class="container ">
+
+        <div class="section-title">
+            <h2>Calculate Cross Section Dimension</h2>
+        </div>
+
+        <div class="row content">
+            <div class="col-lg-4 pb-4">
+
+            </div>
+        </div>
+
+        <div class="row content justify-content-center mt-3 mb-5">
+            <div class="col-lg-5">
+                <p>
+                    Steps for calculating dimension of cross-section:
+                <ol class="upper-roman normal-text">
+                    <li>Choose Loading Type(s)</li>
+                    <li>Enter Maximum Internal Load Value(s)</li>
+                    <li>Enter Allowable Stress Value</li>
+                    <li>Select Desired Element of Structure</li>
+                </ol>
+                </p>
+                <p class="normal-text">
+                    One calculation costs <b>1</b> credit.
+                    <br>
+                    Optimization - finding best possible solution - costs <b>3</b> credits.
+                    <br>
+                    <br>
+                    You currently have <span class="current_credits"><b>{{ session["credits"] }}</b></span>
+                    {% if session["credits"] == 1 %}
+                    credit.
+                    {% else %}
+                    credits.
+                    {% endif %}
+                </p>
+                {% if session["credits"] > 0 %}
+                <div class="d-grid col-5 mx-auto pt-3 text-center">
+                    <a class="btn-calculate" href="/loading_types">Get Started</a>
+                </div>
+                {% else %}
+                <div class="d-grid col-5 mx-auto pt-3 text-center">
+                    <a class="btn-buy-credits" href="/credits">Buy Credits</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Change Password Section -->
+{% endblock %}

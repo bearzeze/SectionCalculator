@@ -1,0 +1,70 @@
+{% extends "layout_calculate.html" %}
+
+{% block title %}
+Allowable Stresses
+{% endblock %}
+
+{% block main %}
+<section id="allowable_stress" class="allowable_stress">
+    <div class="container ">
+        <div class="section-title">
+            <h2>Allowable Stress</h2>
+        </div>
+
+        {% if get_flashed_messages() %}
+        <div class="row content justify-content-center">
+            <div class="col-lg-4 alert alert-danger" role="alert">
+                <h5 class="alert-heading">
+                    <span><svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                            <use xlink:href="#exclamation-triangle-fill" />
+                        </svg></span>
+                    {{text_title}}
+                </h5>
+                <hr>
+                <p class="small ms-auto normal-text">{{ get_flashed_messages() | join(" ") }}</p>
+            </div>
+        </div>
+
+        <div class="row content justify-content-center mt-3 mb-2">
+
+            {% else %}
+            <div class="row content justify-content-center mt-5 mb-5">
+                {% endif %}
+
+                <div class="col-lg-4">
+                    <p>Type Tensile/Yield Strength For Beam Material:</p>
+
+                    <form action="/allowable_stress" method="post" autocomplete="off">
+                        <div class="mb-3 row">
+                            <label for="tensileStrength" class="col-sm-8 col-form-label text-start normal-text">Tensile/Yield Strength:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control text-end" id="tensileStrength" name="tensileStrength"
+                                    placeholder="MPa">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="safetyFactor" class="col-sm-8 col-form-label text-start normal-text">Safety Factor:</label>
+                            <div class="col-sm-4">
+                                <input type="number" class="form-control text-end" id="safetyFactor" name="safetyFactor" placeholder="-" min = "1" step="0.01">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="d-grid gap-2 col-3 ms-auto me-2 pt-3">
+                                <a class="btn btn-outline-danger" href="/loading_values">Previous</a>
+                            </div>
+                            <div class="d-grid gap-2 col-3 ms-2 me-auto pt-3">
+                                <button class="btn btn-outline-success" type="submit">Next</button>
+                            </div>
+                        </div>
+                        <div class="row normal-text mt-2 justify-content-center text-start">
+                            <p><i>*Type ultimate strength if the material is brittle, otherwise yield strength propertiy.</i></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+</section><!-- End Loading Values -->
+
+{% endblock %}
