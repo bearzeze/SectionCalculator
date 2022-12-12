@@ -7,6 +7,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import login_required, usd
 import datetime as dt
 import math
+import smtplib
+import socket
 
 IEX_API_KEY = "export API_KEY=pk_e7260e58ccd74cb092488737c7102848"
 
@@ -100,9 +102,10 @@ def register():
             return redirect("/register")
 
         # Inserting new user if
-        db.execute("INSERT INTO users (username, hash) VALUES(?, ?);", username, generate_password_hash(password))
+        hashed = generate_password_hash(password=password, method="pbkdf2:sha256", salt_length=8)
+        db.execute("INSERT INTO users (username, hash) VALUES(?, ?);", username, hashed)
         flash("Enter your user data in order to login.")
-        return render_template("login.html", error_occurs=False)
+        return render_template("login.html", error_occurs=False, username_exists=True, username=username)
 
     elif request.method == "GET":
         try:
@@ -219,7 +222,8 @@ def change_password():
         
 
         # Update new password in the database
-        db.execute("UPDATE users SET hash = ? WHERE id = ?;", generate_password_hash(new_pw_form), session["user_id"])
+        new_hashed = generate_password_hash(password=new_pw_form, method="pbkdf2:sha256", salt_length=8)
+        db.execute("UPDATE users SET hash = ? WHERE id = ?;", new_hashed, session["user_id"])
         
         flash("You have changed your password. Don't forget it!")
         return render_template("change_password.html", title=text2, behavior="success")

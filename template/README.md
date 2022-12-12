@@ -1,1 +1,0 @@
-# Section Calculator Web Application

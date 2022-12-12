@@ -1529,6 +1529,11 @@ section {
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
 }
 
+.contact
+{
+  background-color: #f3f5fa;
+}
+
 .contact .info i {
   font-size: 20px;
   color: #47b2e4;
