@@ -11,7 +11,7 @@ Application which calculate dimensions of desired sections amongst many standard
 * Tracking user available credit needed for calculation and optimization
 
 ## **How To Use App**
-Instructions on how to use application is fully shown in the video available on the [LINK](https://pages.github.com/).
+Instructions on how to use application is fully shown in the video available on the [LINK](https://www.youtube.com/watch?v=ffURVu_SVjE).
 
 ## **Technical Specifications**
 Design of the web application was heavly based on the Bootstrap template created by [Arsha](https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/). There are certain changes in the design using Bootstrap 5 and CSS, and some additional JavaScript features implemented by author which will be mentioned. Regarding to the HTML, all pages are created by author except homepage, which was modified for the application purpose.
