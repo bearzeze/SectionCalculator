@@ -2,38 +2,38 @@
 
 ## Fully functional app for solving basic elements of structure problems
 
-Application which calculate dimensions of desired sections amongst many standard structural elements based on combinations of basic structural loads and material choice. Application also gives possibilty of calculating best possible solution for specific cases. Application have these major specifications:
+Application which calculate dimensions of desired sections amongst many standard structural elements based on combinations of basic structural loads and material choice. Application also gives possibilty of calculating best possible solution preforming optimization. Application have these major specifications:
 
 * Functional register and login validation
 * User data (changing password, adding more credits etc)
-* Calculating standard dimension for the desired cross-section, loading type combination, material property and safety factor
-* Giving best possible solution - cross-section with smallest possible area - which means cheapest structural element for the same specific loading values and material
+* Calculating required dimension for the desired cross-section and choosing standard one, based on loading type combination, material property and safety factor
+* Giving best possible solution - cross-section with smallest possible area - which means cheapest structural element for the given loading values and material
 * Tracking user available credit needed for calculation and optimization
 
 ## **How To Use App**
-Instructions on how to use application is fully shown in the video from the [LINK](https://pages.github.com/).
+Instructions on how to use application is fully shown in the video available on the [LINK](https://pages.github.com/).
 
 ## **Technical Specifications**
-Design of the web application was heavly based on the Bootstrap template created by [Arsha](https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/). There are certain changes in the design using Bootstrap 5 and CSS, and some additional JavaScript features implemented by author which will be mentioned. Regarding to the HTML, all pages are created by author except homepage.
+Design of the web application was heavly based on the Bootstrap template created by [Arsha](https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/). There are certain changes in the design using Bootstrap 5 and CSS, and some additional JavaScript features implemented by author which will be mentioned. Regarding to the HTML, all pages are created by author except homepage, which was modified for the application purpose.
 
-Backend development was the main focus of this project, which is made in Python 3, in the Flask framework. This application posses three major parts done in Flask:
+Backend development was the main focus of this project, which was done in Python 3. This application posses three major parts done in Flask framework:
 1. User authentication
 2. Calculation and optimization engine
 3. Backend caching
 
 ### **User Authentication**
-In order to calculations to be preformed, user have to be registred and logined.
-**Register** have next specifications:
-- Form requires unique username (database will be searched with filled username)
+In order for calculations to be preformed, user have to be registred and logged in.
+**Register** validation have next specifications:
+- Form requires unique username (database will be queried with filled username)
 - Username needs to have at least 4 characters
 - Password needs to have at least 8 characters with at least one digit
-- Password is hashed and salted before stored in databse
+- Password is hashed and salted before storing in database
 - Every new user gets 10 credits for free
 
 After successful registration **login** can be preformed which have next specifications:
 - Checking whether user exists in the database if not, program redirects to the /register route
-- Checking the password if user exists but password was not correct it redirect to the login form but with filled username
-- If user successfully logined, in cache user's id, username and credits data from the database is being saved
+- Checking the password if user exists but password was not correct it redirect to the same login form, but with filled username
+- If user successfully logged in, user's id, username and credits data from the database is being saved into cache
 
 User can preform certain tasks regarding to his profile:
 - Changing password
@@ -52,7 +52,13 @@ Every subsuquent step requires logged user. Also every step in calculation depen
  - (Optional) Sixth step - optimization. If user chose this step, app will calculate best possible solution amongst all of the given cross-sections. This means that lightest possible structural element (one with the smallest cross-sectional area) will be presented to the user, so expenses can be seized by using this cross-section for the same loading values and chosen material.
 
  ### **Backend caching**
- TODO
+ No steps can be done if user has less than 1 credit (for optimization 3 credits are required), so program will always check credit status.
+ 
+  Because these 5 (or 6) steps are dependent, choices needed to be saved in cache. For example fourth step cannot be done without 1,2 and 3 and so on. Program will save in cache all steps that is done except user visit some of the steps. In that case that step and all of the values from the next steps would be initialized. For example user has done 5 steps and if he goes to the user specifications or home page, he would be able to return to this 5th step. But if he goes to the step 3, all values from steps 4 and 5 would be lost. Because he decided to choose another cross section or another material etc.
+
+  Optimization cannot be done if user did not make initial calculation - 5th step.
+
+  Calculation and optimization results will be saved in cache as long as user visit some of the previous steps (probably he wants to preform calculation/optimization with different values). This backend caching will save users credits if he refresh the page with same load inputs.
 
 
 ## **Needs To Be Done**
